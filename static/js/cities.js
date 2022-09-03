@@ -48,3 +48,8 @@ cities = [{
             "type":"Point",
             "coordinates":[-122.375,37.61899948120117]}}
 ]};
+// line style
+myStyle = {
+  color: "#ffffa1",
+  weight: 2
+};
