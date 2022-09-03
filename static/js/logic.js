@@ -3,7 +3,7 @@ let map = L.map("mapid", {
     center: [
       40.7, -94.5
     ],
-    zoom: 4
+    zoom: 5
   });
 // TILE LAYER METHOD 1:  FROM LEAFLET QUICK START GUIDE
 // let streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
