@@ -76,33 +76,39 @@
 
 
 // ADD MULTIPLE LAYERS/MAPS
-// let streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-//     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+let streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    accessToken: API_KEY
+});
+
+// let light = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+//     attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
 //     maxZoom: 18,
 //     accessToken: API_KEY
 // });
 
-let light = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
+// let dark = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+//     attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
+//     maxZoom: 18,
+//     accessToken: API_KEY
+// });
+let satelliteStreets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     accessToken: API_KEY
 });
 
-let dark = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    accessToken: API_KEY
-});
 // Create a base layer that holds both maps.
 let baseMaps = {
-  'Day Navigation': light,
-  'Night Navigation': dark
+  'Street View': streets,
+  'Satellite/Street View': satelliteStreets
 };
 // Create the map object with center, zoom, and default layer.
 let map = L.map('mapid', {
-  center: [44.0, -80.0],
-  zoom: 3,
-  layers: [light]
+  center: [43.7, -79.3],
+  zoom: 11,
+  layers: [satelliteStreets]
 });
 // Pass our map layers into our layers control and add the layers control to the map.
 L.control.layers(baseMaps).addTo(map);
@@ -113,11 +119,15 @@ L.control.layers(baseMaps).addTo(map);
 // // Access the airport GeoJSON URL
 // let airportData = "https://raw.githubusercontent.com/MattRiley78/Mapping_Earthquakes/Mapping_GeoJSON_Points/majorAirports.json";
 
-// Access the Toronto airline routes GeoJSON URL.
-let torontoData = "https://raw.githubusercontent.com/MattRiley78/Mapping_Earthquakes/Mapping_GeoJSON_Linestrings/torontoRoutes.json";
+// // Access the Toronto airline routes GeoJSON URL.
+// let torontoData = "https://raw.githubusercontent.com/MattRiley78/Mapping_Earthquakes/Mapping_GeoJSON_Linestrings/torontoRoutes.json";
+
+// Accessing the Toronto neighborhoods GeoJSON URL.
+let torontoHoods = "https://raw.githubusercontent.com/MattRiley78/Mapping_Earthquakes/Mapping_GeoJSON_Polygons/torontoNeighborhoods.json";
+
 
 // Grabbing our GeoJSON data, using airportData and d3
-d3.json(torontoData).then(function(data) {
+d3.json(torontoHoods).then(function(data) {
   console.log(data);
   // Create a GeoJSON layer with the retrieved data.
   // L.geoJSON(data, {
@@ -125,11 +135,18 @@ d3.json(torontoData).then(function(data) {
   //     layer.bindPopup("<h3>Airport Code: " + feature.properties.faa + "</h3><hr><h4>Airport Name: " + feature.properties.name + "</h4>")
   //   }
   // }).addTo(map);
+
+  // L.geoJSON(data, {
+  //   style: myStyle,
+  //   onEachFeature: function(feature, layer) {
+  //     layer.bindPopup("<h3>Airline: " + feature.properties.airline + "<hr>Destination: " + feature.properties.dst + "</h3>")
+  //   }
+  // }).addTo(map);
+  
   L.geoJSON(data, {
-    style: myStyle,
-    onEachFeature: function(feature, layer) {
-      layer.bindPopup("<h3>Airline: " + feature.properties.airline + "<hr>Destination: " + feature.properties.dst + "</h3>")
-    }
+    color: "blue",
+    fillColor: "yellow",
+    weight: 1
   }).addTo(map);
 })
 
