@@ -123,7 +123,7 @@ L.control.layers(baseMaps).addTo(map);
 // let torontoData = "https://raw.githubusercontent.com/MattRiley78/Mapping_Earthquakes/Mapping_GeoJSON_Linestrings/torontoRoutes.json";
 
 // Accessing the Toronto neighborhoods GeoJSON URL.
-let torontoHoods = "https://raw.githubusercontent.com/MattRiley78/Mapping_Earthquakes/Mapping_GeoJSON_Polygons/torontoNeighborhoods.json";
+let torontoHoods = "https://raw.githubusercontent.com/MattRiley78/Mapping_Earthquakes/Mapping_GeoJSON_Polygons/Practice/torontoNeighborhoods.json";
 
 
 // Grabbing our GeoJSON data, using airportData and d3
