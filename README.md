@@ -5,13 +5,16 @@ In order to generate buzz about the Disaster Reporting Network, Basil is request
 ## Methods
 - Mapping data was set up and styled using the Leaflet and Mapbox libraries.  
 - In order to give user preference, 3 different map styles were added.
+
 ![MapStyles](https://user-images.githubusercontent.com/106561880/188359157-a48bfba4-c21b-461b-bcb4-05db108e68ec.png)
 
 - Data was retrieved using D3 and linking to external json files.
 - Separate functions were created for 3 different overlays and nested within the primary function.
+
 ![MapLayers](https://user-images.githubusercontent.com/106561880/188359176-ce8eb5f9-dbd8-4fdc-8f06-5545da0c53d8.png)
 
 - Legend was created showing color scheme for magnitudes.
+
 ![Legend](https://user-images.githubusercontent.com/106561880/188359185-109624c0-e115-40c2-b970-4483139dbb50.png)
 
 
