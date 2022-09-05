@@ -70,7 +70,7 @@ function getColor(mag) {
 function styleInfo(feature) {
     return {
         opacity: 1,
-        fillOpacity: 1,
+        fillOpacity: 0.7,
         fillColor: getColor(feature.properties.mag),
         color: "#000000",
         radius: getRadius(feature.properties.mag),
