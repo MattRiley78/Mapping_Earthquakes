@@ -17,6 +17,10 @@ In order to generate buzz about the Disaster Reporting Network, Basil is request
 
 ![Legend](https://user-images.githubusercontent.com/106561880/188359185-109624c0-e115-40c2-b970-4483139dbb50.png)
 
+## Full Map as Shown on index.html File
+Note there are three map styles and 3 map layers that show when index file is opened.
+![fullmap](https://user-images.githubusercontent.com/106561880/188774484-1274c755-516f-4a55-b1cc-5aca1d6fd98c.png)
+
 
 ## Additional Elements Not Originally Requested
 - Map Center was moved to a more globally centric location to allow for more intuitive view of tectonic plates.
