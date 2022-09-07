@@ -220,6 +220,7 @@ legend.onAdd = function() {
       weight: 2
     })
     .addTo(tPlates);
+    tPlates.addTo(map);
   })
-  tPlates.addTo(map);
+  
 });
